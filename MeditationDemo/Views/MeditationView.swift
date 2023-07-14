@@ -5,6 +5,7 @@
 //  Created by Apple on 14/07/23.
 //
 
+
 import SwiftUI
 import Charts
 
@@ -33,6 +34,10 @@ struct MeditationView: View {
             }
         }
         .padding()
+        .onTapGesture {
+            // Dismiss the keyboard
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
 }
 
@@ -167,6 +172,7 @@ struct MemosView: View {
                     TextField("No memos yet", text: $textMemo)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(.gray)
+                        .submitLabel(.done)
                     Spacer()
                 }
                 .frame(height: 50)
